@@ -16,7 +16,7 @@ const bodyParser = require("body-parser");
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://zingy-bienenstitch-c419ed.netlify.app/",
+  "https://main--jazzy-clafoutis-ca122c.netlify.app",
 ];
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

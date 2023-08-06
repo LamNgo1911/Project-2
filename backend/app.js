@@ -14,7 +14,10 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://zingy-bienenstitch-c419ed.netlify.app/",
+];
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", true);

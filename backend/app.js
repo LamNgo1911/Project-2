@@ -16,12 +16,9 @@ const bodyParser = require("body-parser");
 // Define the allowed origin
 const allowedOrigin = "https://jazzy-clafoutis-ca122c.netlify.app";
 
-// Custom middleware to enable CORS
+// Custom middleware to enable CORS for any origin
 app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (origin === allowedOrigin) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any domain
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.setHeader(

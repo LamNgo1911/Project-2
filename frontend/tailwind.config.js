@@ -14,10 +14,10 @@ module.exports = {
         "bg-tag": "#f6f6f6",
       },
       backgroundImage: {
-        background: url("/src/assets/cover.png"),
-        background2: url("/src/assets/cover-2.jpg"),
-        background3: url("/src/assets/cover-3.jpg"),
-        category: url("/src/assets/coverCategory.png"),
+        background: url("/cover.png"),
+        background2: url("/cover-2.jpg"),
+        background3: url("/cover-3.jpg"),
+        category: url("/coverCategory.png"),
         notiImage: url("/src/assets/noti-image.png"),
       },
       animation: {

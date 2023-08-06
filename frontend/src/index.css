@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*, body{
+    font-family: 'Space Grotesk', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+}
+
+/* orders btn */
+.orders button:hover{
+    background-color: #ffdfcd;
+}
+
+.orders button{
+  background-color: #d6d59b;
+}
+
+/* admin btn */
+.admin button:hover{
+  background-color: #5d3791;
+  color: #fff;
+}
+
+/* nav bg */
+.nav.scrolled{
+    background-color: #FFF;
+}
+.symbol-font{
+    font-family: 'Limelight', cursive;
+}
+
+/* hide scroll bar */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* checkbox */
+input[type="radio"]{
+  -webkit-appearance : none;
+  appearance         : none;
+  width              : 16px;
+  height             : 16px;
+  border-radius      : 50%;
+  background         : #fff no-repeat center center;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked{
+  background-color: #013d29;
+}
+
+/* ----------------------active--------------------- */
+.active{
+  background-color: #dd9e35;
+  color: #FFF;
+}
+
+.active-border {
+  border-color: #232222;
+  border-width: 2px;
+}
+
+.nav-admin-active{
+  color: #5d3791 !important;
+  font-weight: bold !important;
+  background-color: #f1edf8;
+  border-radius: 8px;
+}
+
+
+/* swiper btn */
+.big-image > .swiper-button-next, .big-image > .swiper-button-prev{
+  background: #edf2fb;
+  color: #000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+/* swiper arrow */
+.big-image > .swiper-button-next:after, .big-image > .swiper-button-prev:after{
+  font-size: 20px;
+  color: #894c29;
+  font-weight: 700;
+}
+
+/* order-links arrow */
+.order-links > .swiper-button-next:after, .order-links > .swiper-button-prev:after{
+  font-size: 15px;
+  color: #894c29;
+  font-weight: 700;
+}
+.order-links > .swiper-button-next {
+  /* Add the following line to move the .swiper-button-next */
+  right: -8px;
+}
+
+.order-links > .swiper-button-prev {
+  /* Add the following line to move the .swiper-button-next */
+  left: -8px;
+}
+
+/* order-images arrow */
+.order-images > .swiper-button-next:after, .order-images > .swiper-button-prev:after{
+  font-size: 15px;
+  color: #894c29;
+  font-weight: 700;
+}
+.order-images > .swiper-button-next {
+  /* Add the following line to move the .swiper-button-next */
+  right: -8px;
+}
+
+.order-images > .swiper-button-prev {
+  /* Add the following line to move the .swiper-button-next */
+  left: -8px;
+}
+
+/* swiper btn */
+.small-image > .swiper-button-next, .small-image > .swiper-button-prev{
+  background: #edf2fb;
+  color: #000;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+/* swiper arrow */
+.small-image > .swiper-button-next:after, .small-image > .swiper-button-prev:after{
+  font-size: 15px;
+  color: #894c29;
+  font-weight: 700;
+}
+
+/* thumb border */
+.swiper-slide-thumb-active{
+  border-radius: 8px;
+  opacity: 1;
+}
+
+/* table */
+table{
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+}
+
+table, td{
+  text-align: center;
+  padding: 6px; 
+  background: #fff;
+}
+
+th{
+   padding: 6px; 
+}
+
+/* cirle */
+.CircularProgressbar-path{
+  stroke: #5d3791!important;
+  stroke-width: 12px !important;
+  filter: drop-shadow(0px 0px 5px #5d3791);
+}
+
+.CircularProgressbar-text{
+  fill: #5d3791!important;
+  font-size: 20px!important;
+  font-weight: 700!important;
+}
+
+.CircularProgressbar-trail{
+  stroke: #fff!important;
+}
+
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5d3791; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5d3791; 
+}
+
+/* ------------------colors------------------ */
+.bg-khaki{
+  background: #d9c9bc;
+}
+.bg-medium-wash{
+  background: #586c8c;
+}
+.bg-dark-wash{
+  background: #0e1d3e;
+}
+.bg-army-green{
+  background: #454e36;
+}
+.bg-burgundy{
+  background: #651b2d;
+}
+.bg-orange{
+  background: #e14d0c;
+}
+.bg-light-grey{
+  background: #b2b4b8;
+}
+.bg-dark-grey{
+  background: #6a6c6b;
+}
+.bg-green{
+  background: #9bea80;
+}
+.bg-blue{
+  background: #73e3ea;
+}

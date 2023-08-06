@@ -32,7 +32,7 @@ function Login() {
         "/auth/login",
         JSON.stringify(loginData),
         {
-          headers: { "Content-Type": "application/json" },
+          // headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );

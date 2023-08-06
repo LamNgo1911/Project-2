@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
   // Check if the request origin is an allowed origin
   const allowedOrigins = [
     "http://localhost:5173",
-    "https://main--jazzy-clafoutis-ca122c.netlify.app",
+    "https://jazzy-clafoutis-ca122c.netlify.app",
   ];
 
   const origin = req.headers.origin;
@@ -31,21 +31,9 @@ app.use(function (req, res, next) {
 });
 
 app.set("trust proxy", 1);
-// app.use(
-//   rateLimiter({
-//     windowMs: 15 * 60 * 1000,
-//     max: 60,
-//   })
-// );
-// security
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(xss());
 app.use(mongoSanitize());
-app.use(
-  cors({
-    origin: "*",
-  })
-); // Use this after the variable declaration
 app.use(bodyParser.text({ type: "/" }));
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(express.static("./public"));

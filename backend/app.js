@@ -2,31 +2,32 @@ const express = require("express");
 const app = express();
 require("express-async-errors");
 require("dotenv").config();
+const cors = require("cors"); // Import the cors package
 
 const port = process.env.PORT || 5000;
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-const cors = require("cors");
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
+// Define the allowed origin
+const allowedOrigin = "https://jazzy-clafoutis-ca122c.netlify.app";
 
-app.use(function (req, res, next) {
-  // Check if the request origin is an allowed origin
-  const allowedOrigins = [
-    "http://localhost:5173",
-    "https://jazzy-clafoutis-ca122c.netlify.app",
-  ];
-
+// Custom middleware to enable CORS
+app.use((req, res, next) => {
   const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
+  if (origin === allowedOrigin) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
   }
-
-  res.header("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
   next();
 });
 
@@ -40,6 +41,8 @@ app.use(express.static("./public"));
 app.use(fileUpload());
 app.use(morgan("tiny"));
 app.use(express.json());
+
+// ... Rest of your code ...
 
 // user routes
 const authRoutes = require("./routes/auth");

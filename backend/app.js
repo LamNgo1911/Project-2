@@ -14,15 +14,22 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   "https://main--jazzy-clafoutis-ca122c.netlify.app",
-// ];
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  // Check if the request origin is an allowed origin
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "https://main--jazzy-clafoutis-ca122c.netlify.app",
+  ];
+
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
+
 app.set("trust proxy", 1);
 // app.use(
 //   rateLimiter({

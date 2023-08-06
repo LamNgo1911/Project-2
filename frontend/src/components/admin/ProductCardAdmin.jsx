@@ -3,6 +3,7 @@ import { AiFillEye, AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axiosApi/axios";
 import Loading from "../../components/Loading";
+import { imageAxios } from "../../axiosApi/imageAxios";
 
 const ProductCardAdmin = ({ image, name, price, id, oldPrice, loading }) => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const ProductCardAdmin = ({ image, name, price, id, oldPrice, loading }) => {
         <div className="w-full h-[340px] sm:h-[420px] border rounded-lg flex flex-col bg-white">
           <div className="max-w-full max-h-[60%] h-[60%] overflow-hidden rounded-t border">
             <img
-              src={"http://localhost:5000" + image}
+              src={imageAxios + image}
               alt="image"
               className="w-full h-full object-fit hover:scale-110 cursor-pointer"
             />

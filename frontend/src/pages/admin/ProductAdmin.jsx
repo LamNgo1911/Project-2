@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useGetSingleProductQuery } from "../../redux/api/backendApi";
 import axios from "../../axiosApi/axios";
+import { imageAxios } from "../../axiosApi/imageAxios";
 
 const TableCard = ({
   id,
@@ -59,7 +60,7 @@ const TableCard = ({
                   {item?.images?.map((image) => (
                     <img
                       key={image}
-                      src={`http://localhost:5000` + image}
+                      src={imageAxios + image}
                       alt="image"
                       className="w-8 h-8 md:w-10 md:h-10 object-fit rounded-lg"
                     />

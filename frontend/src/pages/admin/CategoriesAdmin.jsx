@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import axios from "../../axiosApi/axios";
+import { imageAxios } from "../../axiosApi/imageAxios";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import { useGetAllCategoriesQuery } from "../../redux/api/backendApi";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +38,7 @@ const TableCard = ({ id, image, name }) => {
         <td className="font-normal text-xs md:text-sm">{id}</td>
         <td className="flex items-center justify-center">
           <img
-            src={"http://localhost:5000" + image}
+            src={imageAxios + image}
             alt="image"
             className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-lg"
           />

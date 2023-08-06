@@ -13,23 +13,20 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
-
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://jazzy-clafoutis-ca122c.netlify.app",
-];
+// Define the allowed origin
+const allowedOrigin = "https://jazzy-clafoutis-ca122c.netlify.app";
 
 // Custom middleware to enable CORS
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
+  if (origin === allowedOrigin) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Type" // Add Content-Type to the list
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   next();
 });

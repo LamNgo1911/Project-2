@@ -26,7 +26,18 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", origin);
   }
 
+  // Allow these headers in the preflight response
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+
+  // Allow credentials
   res.header("Access-Control-Allow-Credentials", true);
+
+  // Allow the specified HTTP methods
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+
   next();
 });
 

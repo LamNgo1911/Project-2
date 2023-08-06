@@ -31,7 +31,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors({ origin: allowedOrigin, credentials: true }));
+app.use(cors({ origin: allowedOrigin, credentials: true })); // Use cors middleware with the allowed origin
+
 app.set("trust proxy", 1);
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(xss());

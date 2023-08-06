@@ -19,15 +19,22 @@ const allowedOrigins = [
   "https://jazzy-clafoutis-ca122c.netlify.app",
 ];
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"], // Add "Content-Type" to the allowedHeaders
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Add "OPTIONS" to the allowed methods
-  })
-);
+// Custom middleware to enable CORS
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+  );
+  next();
+});
 
+app.use(cors());
 app.set("trust proxy", 1);
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(xss());

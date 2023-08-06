@@ -20,13 +20,14 @@ const allowedOrigins = [
   "https://jazzy-clafoutis-ca122c.netlify.app",
 ];
 
+// Set up CORS
 app.use(
   cors({
     origin: allowedOrigins,
     credentials: true,
     methods: "GET, POST, PUT, DELETE, OPTIONS",
     allowedHeaders:
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Type", // Add "Content-Type" to allowedHeaders
   })
 );
 

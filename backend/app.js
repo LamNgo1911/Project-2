@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 require("express-async-errors");
 require("dotenv").config();
-const cors = require("cors");
+const cors = require("cors"); // Import the cors package
 
 const port = process.env.PORT || 5000;
 const morgan = require("morgan");
@@ -14,20 +14,15 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 
-// Set up CORS
 const allowedOrigins = [
   "http://localhost:5173",
   "https://jazzy-clafoutis-ca122c.netlify.app",
 ];
 
-// Set up CORS
 app.use(
   cors({
     origin: allowedOrigins,
     credentials: true,
-    methods: "GET, POST, PUT, DELETE, OPTIONS",
-    allowedHeaders:
-      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Type", // Add "Content-Type" to allowedHeaders
   })
 );
 

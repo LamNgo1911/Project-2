@@ -27,7 +27,7 @@ const User = require("../models/user");
 // Protect routes
 const authenticateUser = async (req, res, next) => {
   const token = req.signedCookies.token;
-
+  console.log(token);
   if (!token) {
     throw new ErrorResponse("Not authorized to access this route", 401);
   }

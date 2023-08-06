@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import CartCard from "../components/cartCard";
+import React, { useEffect, useState } from "react";
+import CartCard from "../components/CartCard";
 import { FaCcVisa } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { loadStripe } from "@stripe/stripe-js";
 import axios from "../axiosApi/axios";
 
 function Review() {

@@ -2,44 +2,33 @@ const express = require("express");
 const app = express();
 require("express-async-errors");
 require("dotenv").config();
+const cors = require("cors");
 
 const port = process.env.PORT || 5000;
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
-const cors = require("cors");
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 
-app.use(function (req, res, next) {
-  // Check if the request origin is an allowed origin
-  const allowedOrigins = [
-    "http://localhost:5173",
-    "https://jazzy-clafoutis-ca122c.netlify.app",
-  ];
+// Set up CORS
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://jazzy-clafoutis-ca122c.netlify.app",
+];
 
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
-  }
-
-  // Allow these headers in the preflight response
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-
-  // Allow credentials
-  res.header("Access-Control-Allow-Credentials", true);
-
-  // Allow the specified HTTP methods
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-
-  next();
-});
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
+    allowedHeaders:
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  })
+);
 
 app.set("trust proxy", 1);
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -51,6 +40,8 @@ app.use(express.static("./public"));
 app.use(fileUpload());
 app.use(morgan("tiny"));
 app.use(express.json());
+
+// ... Rest of your code ...
 
 // user routes
 const authRoutes = require("./routes/auth");

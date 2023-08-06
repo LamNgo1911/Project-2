@@ -14,11 +14,11 @@ module.exports = {
         "bg-tag": "#f6f6f6",
       },
       backgroundImage: {
-        background: "url('./src/assets/cover.png')",
-        background2: "url('./src/assets/cover-2.jpg')",
-        background3: "url('./src/assets/cover-3.jpg')",
-        category: "url('./src/assets/coverCategory.png')",
-        notiImage: "url('./src/assets/noti-image.png')",
+        background: "url('/src/assets/cover.png')",
+        background2: "url('/src/assets/cover-2.jpg')",
+        background3: "url('/src/assets/cover-3.jpg')",
+        category: "url('/src/assets/coverCategory.png')",
+        notiImage: "url('/src/assets/noti-image.png')",
       },
       animation: {
         slideup: "slideup 1s ease-in-out",

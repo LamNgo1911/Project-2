@@ -1,1 +1,1 @@
-export const imageAxios = "http://localhost:5000";
+export const imageAxios = "https://wearmeout.onrender.com";

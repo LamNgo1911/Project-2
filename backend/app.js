@@ -14,7 +14,7 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 // Define the allowed origin
-const allowedOrigin = "https://jazzy-clafoutis-ca122c.netlify.app";
+const allowedOrigin = "*";
 
 // Custom middleware to enable CORS
 app.use((req, res, next) => {

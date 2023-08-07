@@ -1,27 +1,13 @@
-const sendTokenResponse = (user, statusCode, req, res) => {
+const sendTokenResponse = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
-
-  const cookieOptions = {
+  // console.log(token);
+  // res.cookie(name,value,{options})
+  res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 3600 * 24),
+    secure: process.env.NODE_ENV === "production",
     signed: true,
-  };
-
-  // Set secure option based on HTTPS requirement
-  if (req.secure || req.headers["x-forwarded-proto"] === "https") {
-    cookieOptions.secure = true; // Set secure cookie for HTTPS
-  }
-
-  // Set sameSite option based on cross-site considerations
-  if (req.headers.origin) {
-    const originHost = new URL(req.headers.origin).hostname;
-    if (originHost !== req.hostname) {
-      cookieOptions.sameSite = "none"; // Set sameSite to "none" for cross-site requests
-    }
-  }
-
-  // Set the token cookie
-  res.cookie("token", token, cookieOptions);
+  });
 
   res.status(statusCode).json({
     success: true,

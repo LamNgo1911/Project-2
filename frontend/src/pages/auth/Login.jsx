@@ -43,7 +43,7 @@ function Login() {
         setPassword("");
         dispatch(getUser(data?.user));
         navigate("/");
-        window.location.reload(); // Refresh the page
+        // window.location.reload(); // Refresh the page
       }
     } catch (error) {
       if (!error.response) {

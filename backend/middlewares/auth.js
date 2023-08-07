@@ -29,6 +29,7 @@ const authenticateUser = async (req, res, next) => {
   const token = req.signedCookies.token;
   console.log(token);
   if (!token) {
+    console.log("hello");
     throw new ErrorResponse("Not authorized to access this route", 401);
   }
   try {

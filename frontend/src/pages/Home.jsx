@@ -24,6 +24,7 @@ import {
 import ProductCard from "../components/ProductCard";
 import { resetSelectedItems } from "../redux/service/shoppingSlice";
 import { useDispatch, useSelector } from "react-redux";
+import LoadingStart from "../components/LoadingStart";
 
 function Home() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Home() {
   const [trendingCategory, setTrendingCategory] = useState([]);
 
   const { data: categoriesData } = useGetAllCategoriesQuery();
-  const { data: topProducts } = useGetTopProductsQuery();
+  const { data: topProducts} = useGetTopProductsQuery();
   const { data: weeklyProducts } = useGetWeeklyProductsQuery();
   const { data: bestProducts, isFetching } = useGetAllProductsPerPageQuery({
     category,
@@ -74,6 +75,7 @@ function Home() {
   }, [categoriesData]);
 
   return (
+    isFetching ? <LoadingStart /> :
     <div className="flex flex-col md:gap-12 gap-8 pb-8">
       {/* cover img */}
       <div

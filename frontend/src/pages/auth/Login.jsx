@@ -84,8 +84,8 @@ function Login() {
   const handleDemoUser = async (e) => {
     e.preventDefault();
     handle(e, {
-      email: "lamngoforest@gmail.com",
-      password: "lamngo123",
+      email: "lamngo1996@gmail.com",
+      password: "lamngo0961014196",
     });
   };
   return (

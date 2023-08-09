@@ -1,5 +1,5 @@
 const sendTokenResponse = (user, statusCode, res) => {
-  user.getSignedJwtToken();
+  const token = user.getSignedJwtToken();
   // console.log(token);
   // res.cookie(name,value,{options})
   // res.cookie("token", token, {
@@ -8,9 +8,10 @@ const sendTokenResponse = (user, statusCode, res) => {
   //   secure: process.env.NODE_ENV === "production",
   //   signed: true,
   // });
-
+  console.log(token)
   res.status(statusCode).json({
     success: true,
+    token,
     user: {
       name: user.name,
       id: user._id,

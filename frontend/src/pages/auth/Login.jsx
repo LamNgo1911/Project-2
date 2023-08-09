@@ -45,6 +45,7 @@ function Login() {
         navigate("/");
         window.location.reload(); // Refresh the page
       }
+      console("hello")
     } catch (error) {
       if (!error.response) {
         setError("No server response. Please try again later.");

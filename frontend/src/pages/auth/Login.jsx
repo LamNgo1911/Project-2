@@ -36,8 +36,8 @@ function Login() {
           withCredentials: true,
         }
       );
-      console.log(data);
       if (data) {
+        console.log(data);
         setLoading(false);
         setEmail("");
         setPassword("");

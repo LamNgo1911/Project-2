@@ -4,7 +4,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/user");
 
 // Protect routes
-exports.authenticateUser = async (req, res, next) => {
+ const authenticateUser = async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&

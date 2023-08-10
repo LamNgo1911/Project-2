@@ -24,7 +24,7 @@ function Payment() {
   const { cartItems, shippingInfo, selectedItems } = useSelector(
     (state) => state.shopping
   );
-  const { user } = useSelector((state) => state?.auth);
+  const { user, token } = useSelector((state) => state?.auth);
   const shippingFee = 10;
   const tax = 10;
 
@@ -67,6 +67,7 @@ function Payment() {
     // sessionStorage.setItem("paymentMethodId", JSON.stringify(paymentMethodId));
     // Create order
     try {
+      console.log(axios)
       const { data } = await axios.post(
         "/orders",
         JSON.stringify({
@@ -77,7 +78,7 @@ function Payment() {
           paymentMethodId,
         }),
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json",  Authorization: `Bearer ${token}`},
           withCredentials: true,
         }
       );

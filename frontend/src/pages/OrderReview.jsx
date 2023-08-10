@@ -4,9 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import OrderReviewCard from "../components/OrderReviewCard";
 import axios from "../axiosApi/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 function OrderReview() {
   const { id } = useParams();
+  const {token} = useSelector(state => state.auth)
   const { data: orderData } = useGetSingleOrderQuery(id);
   const navigate = useNavigate();
   const [messageError, setMessageError] = useState("");
@@ -91,7 +93,7 @@ function OrderReview() {
             product: item?.product,
           }),
           {
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" , Authorization: `Bearer ${token}`},
             withCredentials: true,
           }
         );
@@ -114,7 +116,7 @@ function OrderReview() {
           status: "reviewed",
         }),
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           withCredentials: true,
         }
       );

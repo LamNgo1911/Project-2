@@ -11,6 +11,7 @@ import { HiLocationMarker } from "react-icons/hi";
 import { useGetSingleOrderQuery } from "../../redux/api/backendApi";
 import { imageAxios } from "../../axiosApi/imageAxios";
 import axios from "../../axiosApi/axios";
+import { useSelector } from "react-redux";
 
 function getStatusClass(orderStatus) {
   switch (orderStatus) {
@@ -28,6 +29,7 @@ function getStatusClass(orderStatus) {
 }
 
 function OrderAdmin() {
+  const {token} = useSelector(state => state.auth)
   const { id } = useParams();
   const navigate = useNavigate();
   const [order, setOrder] = useState([]);
@@ -44,7 +46,7 @@ function OrderAdmin() {
         `/orders/${id}/updateOrderStatus`,
         { status: "delivered" },
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           withCredentials: true,
         }
       );
@@ -64,7 +66,7 @@ function OrderAdmin() {
         `/orders/${id}/updateOrderStatus`,
         { status: "shipped" },
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           withCredentials: true,
         }
       );

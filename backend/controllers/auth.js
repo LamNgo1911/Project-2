@@ -64,10 +64,11 @@ userController.login = async (req, res, next) => {
 // @route   POST /api/v1/auth/logout
 // @access  Public
 userController.logout = async (req, res, next) => {
-  res.cookie("token", "logout", {
-    httpOnly: true,
-    expires: new Date(Date.now()),
-  });
+  res.setHeader("Authorization", "");
+  // res.cookie("token", "logout", {
+  //   httpOnly: true,
+  //   expires: new Date(Date.now()),
+  // });
   // res.clearCookie("token");
   res.status(StatusCodes.OK).json({ msg: "user logged out!" });
 };

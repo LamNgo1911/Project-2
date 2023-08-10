@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import image from "../../assets/symbol.png";
@@ -8,9 +8,7 @@ import { RiCouponLine } from "react-icons/ri";
 import { GrContact } from "react-icons/gr";
 import { FiSettings } from "react-icons/fi";
 import { RxPerson } from "react-icons/rx";
-import { useDispatch } from "react-redux";
 import axios from "../../axiosApi/axios";
-import { getUser } from "../../redux/service/authSlice";
 
 const navigationLinks = [
   {
@@ -69,7 +67,7 @@ const otherLinks = [
 ];
 
 const AdminNavLink = ({ icon, name, to, active }) => {
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   // handle logout
   const handleClick = async () => {
@@ -79,8 +77,8 @@ const AdminNavLink = ({ icon, name, to, active }) => {
           withCredentials: true,
         });
         if (response) {
-          console.log(response);
-          dispatch(getUser({}));
+          sessionStorage.removeItem("token");
+          sessionStorage.removeItem("user");
           navigate("/login");
         }
       } catch (error) {

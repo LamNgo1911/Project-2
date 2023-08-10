@@ -19,12 +19,13 @@ const TableCard = ({
   description,
   refetch,
 }) => {
+  const {token} = useSelector(state => state.auth)
   const dispatch = useDispatch();
   // delete a coupon
   const handleDelete = async (e) => {
     try {
       const { data } = await axios.delete(`/coupons/${id}`, {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
       if (data) {

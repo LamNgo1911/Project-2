@@ -11,6 +11,7 @@ import {
   useGetFetchWeeklySalesDataQuery,
   useGetFetchYearlySalesDataQuery,
 } from "../../redux/api/backendApi";
+import { useSelector } from "react-redux";
 
 function getStatusClass(orderStatus) {
   switch (orderStatus) {
@@ -75,7 +76,7 @@ function Dashboard() {
   const { data: weeklySalesData } = useGetFetchWeeklySalesDataQuery();
   const { data: monthlySalesData } = useGetFetchMonthlySalesDataQuery();
   const { data: yearlySalesData } = useGetFetchYearlySalesDataQuery();
-
+  
   useEffect(() => {
     setTableData(allOrderData?.orders?.slice(0, 4));
   }, [allOrderData]);

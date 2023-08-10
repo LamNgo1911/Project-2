@@ -9,7 +9,7 @@ function Review() {
   const [notification, setNotification] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { order } = useSelector((state) => state.shopping);
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -26,7 +26,7 @@ function Review() {
           paymentIntentId: order?.paymentIntentId,
         }),
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json" ,  Authorization: `Bearer ${token}`},
           withCredentials: true,
         }
       );

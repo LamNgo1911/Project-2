@@ -1,10 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+const token = JSON.parse(sessionStorage.getItem("token"))
 
 export const backendApi = createApi({
   reducerPath: "backendApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://wearmeout.onrender.com/api/v1",
     credentials: "include",
+    prepareHeaders: (headers) => {
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+     
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     // category

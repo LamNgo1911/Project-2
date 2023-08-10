@@ -73,6 +73,7 @@ function CategoriesAdmin() {
   const errorRef = useRef();
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.info);
+  const {token} = useSelector(state => state.auth)
 
   const { data, isFetching, isError, refetch } = useGetAllCategoriesQuery();
 
@@ -97,7 +98,7 @@ function CategoriesAdmin() {
 
     try {
       const { data } = await axios.post("/categories/uploadImage", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
       console.log(data);
@@ -130,7 +131,7 @@ function CategoriesAdmin() {
             image: categoryImage,
           }),
           {
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
             withCredentials: true,
           }
         );

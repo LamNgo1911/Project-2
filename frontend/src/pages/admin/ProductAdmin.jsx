@@ -6,6 +6,7 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useGetSingleProductQuery } from "../../redux/api/backendApi";
 import axios from "../../axiosApi/axios";
 import { imageAxios } from "../../axiosApi/imageAxios";
+import { useSelector } from "react-redux";
 
 const TableCard = ({
   id,
@@ -20,12 +21,13 @@ const TableCard = ({
   user,
   deal,
 }) => {
+  const {token} = useSelector(state => state.auth)
   const [show, setShow] = React.useState(false);
   const modelRef = React.useRef(null);
 
   const handleRemoveClick = async () => {
     await axios.delete(`/products/${id}`, {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",  Authorization: `Bearer ${token}` },
       withCredentials: true,
     });
   };

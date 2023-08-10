@@ -10,7 +10,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsFillBagFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "../axiosApi/axios";
-import { getUser } from "../redux/service/authSlice";
+
 import {
   useGetAllCategoriesQuery,
   useGetAllProductsPerPageQuery,
@@ -45,7 +45,8 @@ function Sibar() {
       });
       if (response) {
         // console.log(response);
-        dispatch(getUser({}));
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user");
         navigate("/login");
       }
     } catch (error) {

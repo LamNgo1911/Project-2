@@ -1,14 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineSearch, AiFillEye } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
 import { useEffect } from "react";
-import { RiDeleteBin5Line } from "react-icons/ri";
 import { useGetAllUsersQuery } from "../../redux/api/backendApi";
 import axios from "../../axiosApi/axios";
+import { useSelector } from "react-redux";
 
 const TableCard = ({ id, name, email, role, date, status }) => {
   const navigate = useNavigate();
+  const {token} = useSelector(state => state.token)
   const [show, setShow] = useState(false);
   const modelRef = React.useRef(null);
   useEffect(() => {
@@ -27,7 +28,7 @@ const TableCard = ({ id, name, email, role, date, status }) => {
     if (status) {
       try {
         await axios.post(`user/${id}/disable`, {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           withCredentials: true,
         });
       } catch (error) {
@@ -36,7 +37,7 @@ const TableCard = ({ id, name, email, role, date, status }) => {
     } else {
       try {
         await axios.post(`user/${id}/activate`, {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           withCredentials: true,
         });
       } catch (error) {

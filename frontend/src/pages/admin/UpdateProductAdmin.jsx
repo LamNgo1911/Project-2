@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 
 function updateProductAdmin() {
   const { id } = useParams();
+  const {token} = useSelector(state => state.auth)
   // data
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   const { data: productData } = useGetSingleProductQuery(id);
@@ -89,7 +90,7 @@ function updateProductAdmin() {
     // console.log(formData);
     try {
       const { data } = await axios.post("/products/uploadImage", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
       console.log(data);
@@ -207,7 +208,7 @@ function updateProductAdmin() {
             deal: deal?._id || productData?.product?.deal?._id,
           }),
           {
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
             withCredentials: true,
           }
         );

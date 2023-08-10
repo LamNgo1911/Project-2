@@ -4,8 +4,10 @@ import { useState } from "react";
 import axios from "../../axiosApi/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import { useGetAllCouponsQuery } from "../../redux/api/backendApi";
+import { useSelector } from "react-redux";
 
 function UpdateCouponAdmin() {
+  const {token} = useSelector(state => state.auth)
   const [code, setCode] = useState("");
   const [discount, setDiscount] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -89,7 +91,7 @@ function UpdateCouponAdmin() {
             description,
           }),
           {
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
             withCredentials: true,
           }
         );

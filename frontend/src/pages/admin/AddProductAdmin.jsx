@@ -6,9 +6,11 @@ import {
 } from "../../redux/api/backendApi";
 import axios from "../../axiosApi/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 function AddProductAdmin() {
   // sizes data
+  const {token} = useSelector(state => state.auth)
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   // info
   const [productName, setProductName] = useState("");
@@ -83,7 +85,7 @@ function AddProductAdmin() {
     // console.log(formData);
     try {
       const { data } = await axios.post("/products/uploadImage", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
       // console.log(data);
@@ -196,7 +198,7 @@ function AddProductAdmin() {
             deal: deal?._id,
           }),
           {
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
             withCredentials: true,
           }
         );

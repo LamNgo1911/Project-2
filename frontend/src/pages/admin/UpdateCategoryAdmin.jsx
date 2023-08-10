@@ -3,9 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import axios from "../../axiosApi/axios";
 import { useGetAllCategoriesQuery } from "../../redux/api/backendApi";
+import { useSelector } from "react-redux";
 
 function UpdateCategoryAdmin() {
   const { id } = useParams();
+  const {token} = useSelector(state => state.auth)
   const { refetch } = useGetAllCategoriesQuery();
   const [categoryName, setCategoryName] = useState("");
   const [validCategoryName, setValidCategoryName] = useState(false);
@@ -38,7 +40,7 @@ function UpdateCategoryAdmin() {
 
     try {
       const { data } = await axios.post("/categories/uploadImage", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
       console.log(data);

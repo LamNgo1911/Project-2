@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axiosApi/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { getUser } from "../../redux/service/authSlice";
+import { getUser, setToken } from "../../redux/service/authSlice";
 
 function Login() {
   const navigate = useNavigate();
@@ -41,11 +41,12 @@ function Login() {
         setLoading(false);
         setEmail("");
         setPassword("");
+        dispatch(setToken(data?.token))
         dispatch(getUser(data?.user));
         navigate("/");
-        window.location.reload(); // Refresh the page
+        // window.location.reload(); // Refresh the page
       }
-      console.log("hello")
+      // console.log("hello")
     } catch (error) {
       if (!error.response) {
         setError("No server response. Please try again later.");

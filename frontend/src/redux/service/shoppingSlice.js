@@ -157,10 +157,10 @@ const shoppingSlice = createSlice({
     resetCart: (state, action) => {
       const { userId } = action.payload;
 
-      state.cartItems = [];
+      state.cartItems = null;
 
       if (userId) {
-        localStorage.setItem(`cartItems_${userId}`, JSON.stringify([]));
+        localStorage.setItem(`cartItems_${userId}`, JSON.stringify(null));
       }
     },
     setAmount: (state, action) => {
@@ -208,10 +208,10 @@ const shoppingSlice = createSlice({
     resetSelectedItems: (state, action) => {
       const { userId } = action.payload;
 
-      state.selectedItems = [];
+      state.selectedItems = null;
 
       if (userId) {
-        localStorage.setItem(`selectedItems_${userId}`, JSON.stringify([]));
+        localStorage.setItem(`selectedItems_${userId}`, JSON.stringify(null));
       }
     },
     setIsCartAdded: (state, action) => {

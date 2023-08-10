@@ -4,13 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axiosApi/axios";
 import Loading from "../../components/Loading";
 import { imageAxios } from "../../axiosApi/imageAxios";
+import { useSelector } from "react-redux";
 
 const ProductCardAdmin = ({ image, name, price, id, oldPrice, loading }) => {
   const navigate = useNavigate();
+  const {token} = useSelector(state => state.auth)
 
   const handleRemoveClick = async () => {
     await axios.delete(`/products/${id}`, {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",  Authorization: `Bearer ${token}`},
       withCredentials: true,
     });
   };

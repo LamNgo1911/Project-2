@@ -34,7 +34,7 @@ function VerifyEmail() {
         "/auth/forgot-password",
         JSON.stringify({ email }),
         {
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", },
           withCredentials: true,
         }
       );

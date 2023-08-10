@@ -3,9 +3,11 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import axios from "../../axiosApi/axios";
 import { AiFillExclamationCircle } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 function UpdateDealAdmin() {
   const { id } = useParams();
+  const {token} = useSelector(state => state.auth)
   // info
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -62,7 +64,7 @@ function UpdateDealAdmin() {
             discount,
           }),
           {
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
             withCredentials: true,
           }
         );

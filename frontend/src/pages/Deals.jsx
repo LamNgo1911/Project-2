@@ -162,7 +162,7 @@ function Deals() {
         </div>
         {/* filter fixed */}
         <div
-          className={`filter-outside fixed h-screen w-full z-[9998] left-0 top-0 bg-black bg-opacity-50 ${
+          className={`filter-outside fixed h-screen w-full max-w-[1280px] left-1/2 -translate-x-1/2 mx-auto z-[9998] top-0 bg-black bg-opacity-50 ${
             showFilter ? "block" : "hidden"
           }`}
         >

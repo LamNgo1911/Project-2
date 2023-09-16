@@ -1,16 +1,24 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const token = JSON.parse(sessionStorage.getItem("token"))
+const token = JSON.parse(sessionStorage.getItem("token"));
+
+// Define your production and development base URLs
+const productionBaseUrl = "https://wearmeout.onrender.com/api/v1";
+const developmentBaseUrl = "http://localhost:5000/api/v1";
+
+// Determine the environment (production or development)
+const isProduction = process.env.NODE_ENV === "production";
 
 export const backendApi = createApi({
   reducerPath: "backendApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://wearmeout.onrender.com/api/v1",
+    // Use the appropriate base URL based on the environment
+    baseUrl: isProduction ? productionBaseUrl : developmentBaseUrl,
     credentials: "include",
     prepareHeaders: (headers) => {
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
-     
+
       return headers;
     },
   }),

@@ -11,9 +11,10 @@ const userController = {};
 userController.register = async (req, res, next) => {
   const { name, email, password, role } = req.body;
 
-  const emailAlreadyExists = await User.find({ email });
+  const emailAlreadyExists = await User.findOne({ email });
+
   if (emailAlreadyExists) {
-    throw new ErrorResponse("Email already exists", StatusCodes.BAD_REQUEST);
+    throw new ErrorResponse("Email already exists", StatusCodes.CONFLICT);
   }
 
   // Create user

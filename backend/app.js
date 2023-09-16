@@ -14,23 +14,28 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const bodyParser = require("body-parser");
 // Define the allowed origin
-const allowedOrigin = "https://jazzy-clafoutis-ca122c.netlify.app";
+const allowedOrigin = [
+  "https://jazzy-clafoutis-ca122c.netlify.app",
+  "http://localhost:5173",
+]; // Add localhost as an allowed origin
 
 // Custom middleware to enable CORS
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (origin === allowedOrigin) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,PATCH");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
-
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigin.includes(origin) || !origin) {
+        // Allow requests from allowed origins or no origin (localhost)
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow credentials (cookies, authorization headers)
+    methods: "GET,HEAD,OPTIONS,POST,PUT,PATCH",
+    allowedHeaders:
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+  })
+);
 
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(xss());

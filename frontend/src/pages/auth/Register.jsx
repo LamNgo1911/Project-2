@@ -118,6 +118,7 @@ function Register() {
           setError("Username or email already exists");
         } else {
           setError("Something went wrong");
+          console.log(error)
         }
 
         errorRef?.current?.focus();

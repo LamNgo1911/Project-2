@@ -8,8 +8,7 @@ import axios from "../../axiosApi/axios";
 import { useSelector } from "react-redux";
 
 const TableCard = ({ id, name, email, role, date, status }) => {
-  const navigate = useNavigate();
-  const {token} = useSelector(state => state.token)
+  const {token} = useSelector(state => state.auth)
   const [show, setShow] = useState(false);
   const modelRef = React.useRef(null);
   useEffect(() => {

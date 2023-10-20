@@ -72,6 +72,7 @@ function Sibar() {
       });
     };
     handleScroll();
+   return () => window.removeEventListener("scroll", handleScroll)
   }, []);
   // handle show and close the suggestion box
   useEffect(() => {

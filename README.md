@@ -10,7 +10,21 @@ Wearmeout is a visionary e-commerce project I developed to simplify online fashi
 
 ## Preview
 
+### Live website
+https://jazzy-clafoutis-ca122c.netlify.app 
+(Please be patient, it may take a bit longer to load data since I use a free version. Thank you for understanding.😇)
 
+### Video
+https://drive.google.com/file/d/1rSILt2XCLc8fm-43hfLsLMYoBtN1E9SU/view?usp=drive_link
+
+### Photos
+
+Home page
+
+![home-page-1](https://github.com/LamNgo1911/wearmeout/assets/121915847/ddfe96bd-88ab-4b73-919a-2ef6f2d460cf)
+
+
+![home-page-2](https://github.com/LamNgo1911/wearmeout/assets/121915847/962f9487-5671-4ca1-953f-d3eb976fdf2a)
 
 
 
